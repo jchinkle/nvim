@@ -5,7 +5,6 @@ return {
 		"nvim-lua/plenary.nvim",
 		"nvim-tree/nvim-web-devicons",
 		"MunifTanjim/nui.nvim",
-		-- "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
 	},
 	config = function()
 		require("neo-tree").setup({
@@ -25,10 +24,14 @@ return {
 			},
 		})
 		
-		-- Open Neo-tree on startup
+		-- Open Neo-tree on startup and focus main window
 		vim.api.nvim_create_autocmd("VimEnter", {
 			callback = function()
 				require("neo-tree.command").execute({ toggle = true })
+				-- Wait briefly for neo-tree to open, then focus the main window
+				vim.defer_fn(function()
+					vim.cmd("wincmd p")  -- Go to previous window
+				end, 10)
 			end,
 		})
 	end,
