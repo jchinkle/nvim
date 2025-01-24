@@ -32,6 +32,23 @@ return {
     end
   },
 
+  -- Search in files (like :Ack)
+  {
+    "mileszs/ack.vim",
+    cmd = "Ack",
+    config = function()
+      -- Use ripgrep instead of ack
+      vim.g.ackprg = 'rg --vimgrep --smart-case --hidden'
+      
+      -- Don't jump to first match
+      vim.g.ack_autoclose = 0
+      vim.g.ack_autofold_results = 0
+      
+      -- Highlight search term in quickfix window
+      vim.g.ackhighlight = 1
+    end,
+  },
+
   -- Language Support
   {
     "vim-test/vim-test",
