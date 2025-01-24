@@ -61,11 +61,4 @@ return {
     "tpope/vim-rails",
     ft = {"ruby", "eruby", "haml", "slim"},
   },
-
-  -- Color scheme
-  {
-    "lifepillar/vim-solarized8",
-    lazy = false,
-    priority = 1000,
-  },
 }
