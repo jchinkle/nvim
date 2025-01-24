@@ -28,8 +28,18 @@ return {
 		vim.api.nvim_create_autocmd("VimEnter", {
 			callback = function()
 				require("neo-tree.command").execute({ toggle = true })
-				-- Wait briefly for neo-tree to open, then focus the main window
+				-- Disable line numbers in the neo-tree window
 				vim.defer_fn(function()
+					local wins = vim.api.nvim_list_wins()
+					for _, win in ipairs(wins) do
+						local buf = vim.api.nvim_win_get_buf(win)
+						local ft = vim.api.nvim_buf_get_option(buf, 'filetype')
+						if ft == 'neo-tree' then
+							local win_id = win
+							vim.api.nvim_win_set_option(win_id, 'number', false)
+							vim.api.nvim_win_set_option(win_id, 'relativenumber', false)
+						end
+					end
 					vim.cmd("wincmd p")  -- Go to previous window
 				end, 10)
 			end,
