@@ -1,6 +1,9 @@
 local global = vim.g
 local o = vim.opt
 
+-- Set GUI Font for Neovim
+o.guifont = "DejaVuSansM Nerd Font:h12"
+
 o.number = true
 o.relativenumber = true
 o.clipboard = "unnamedplus"
