@@ -1,4 +1,5 @@
-vim.g.mapleader = " "
+-- Set leader key to comma
+vim.g.mapleader = ","
 
 local function map(mode, lhs, rhs, opts)
 	opts = opts or {}
@@ -36,7 +37,7 @@ map("n", "<C-Up>", "<C-w>+")
 map("n", "<C-Down>", "<C-w>-")
 
 -- Telescope
-map("n", "<leader>ff", "<CMD>Telescope find_files<CR>", { desc = "Fuzzy find files in cwd" })
+map("n", "<leader>f", "<CMD>Telescope find_files<CR>")
 map("n", "<leader>fg", "<CMD>Telescope live_grep<CR>", { desc = "Find string in cwd" })
 map("n", "<leader>fb", "<CMD>Telescope buffers<CR>", { desc = "Fuzzy find opened files" })
 map("n", "<leader>fs", "<CMD>Telescope git_status<CR>", { desc = "Show git file diffs" })
